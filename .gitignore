@@ -1,0 +1,9 @@
+bin/
+lib/
+*.cfg
+__pycache__
+.venv/
+.pytest_cache
+.coverage
+pytest.ini
+node_modules/
