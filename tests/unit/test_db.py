@@ -1,5 +1,5 @@
 from models.db import Db
-from models.duty_model import Duty
+from models.duty import Duty
 import pytest
 
 @pytest.fixture 

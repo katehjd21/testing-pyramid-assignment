@@ -1,4 +1,4 @@
-from models.duty_model import Duty
+from models.duty import Duty
 
 
 class DutyController:
