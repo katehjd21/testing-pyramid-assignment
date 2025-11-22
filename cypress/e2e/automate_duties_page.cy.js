@@ -122,5 +122,5 @@ describe('Automate Duties Page', () => {
     cy.get('button[type="submit"]').click()
 
     cy.url().should('include', '/automate')
-})
+    })
 })

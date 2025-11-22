@@ -12,4 +12,5 @@ class DutiesController():
     @staticmethod
     def create_duty(number, description, ksbs):
         duty = Duty(number, description, ksbs)
-        return duties_store.add_duty(duty)
+        created_duty = duties_store.add_duty(duty)
+        return created_duty

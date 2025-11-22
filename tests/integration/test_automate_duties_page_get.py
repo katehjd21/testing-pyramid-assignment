@@ -9,7 +9,7 @@ def client():
     with app.test_client() as client:
         yield client
 
-def test_automate_duties_page_get(client):
+def test_automate_duties_page_get_duties(client):
     duties_store._duties.clear()
     duty = Duty(1, "Test Description", ["Knowledge", "Skills", "Behaviours"])
     duties_store.add_duty(duty)
@@ -18,10 +18,13 @@ def test_automate_duties_page_get(client):
     html = response.data.decode()
 
     assert response.status_code == 200
-    assert "<td>1</td>" in html
-    assert "<td>Test Description</td>" in html
-    assert "<td>Knowledge, Skills, Behaviours</td>" in html
     assert "<table>" in html
+
+    all_duties = duties_store.get_all_duties()
+    for duty in all_duties:
+        assert f"<td>{duty.number}</td>" in html
+        assert f"<td>{duty.description}</td>" in html
+        assert f"<td>{', '.join(duty.ksbs)}</td>" in html
 
 def test_automate_page_get_multiple_duties(client):
     duties_store._duties.clear()
@@ -31,7 +34,11 @@ def test_automate_page_get_multiple_duties(client):
     response = client.get('/automate')
     html = response.data.decode()
 
-    assert "<td>1</td>" in html
-    assert "<td>2</td>" in html
-    assert "Duty One Description" in html
-    assert "Duty Two Description" in html
+    assert response.status_code == 200
+    assert "<table>" in html
+
+    all_duties = duties_store.get_all_duties()
+    for duty in all_duties:
+        assert f"<td>{duty.number}</td>" in html
+        assert f"<td>{duty.description}</td>" in html
+        assert f"<td>{', '.join(duty.ksbs)}</td>" in html

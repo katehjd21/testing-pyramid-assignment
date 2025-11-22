@@ -3,6 +3,9 @@ class Duties():
         self._duties = []
     
     def add_duty(self, duty):
+        for existing_duty in self._duties:
+            if existing_duty.number == duty.number:
+                return None
         self._duties.append(duty)
         return duty
     

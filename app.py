@@ -27,14 +27,11 @@ def add_automate_duty():
             stripped_item = item.strip()
             ksbs_list.append(stripped_item)
 
-    DutiesController.create_duty(number, description, ksbs_list)
+    created_duty = DutiesController.create_duty(number, description, ksbs_list)
+    
+    if created_duty is None:
+        duties = DutiesController.fetch_all_duties()
+        return render_template("automate_duties.html", duties=duties, error=f"Duty {number} already exists!")
 
     return redirect(url_for('automate_page'))
-
-@app.route('/reset_duties', methods=['POST'])
-def reset_duties():
-    duties_store._duties.clear()
-    return "Duties Store Cleared!"
-
-
-    
+ 
