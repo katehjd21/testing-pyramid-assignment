@@ -5,9 +5,12 @@ This repository contains my TDD Safari project work for the apprenticeship, incl
 
 ## Supporting Evidence
 
-Supporting evidence can be found in the **Supporting Evidence** folder. These are saved as PDFs and a Markdown file.  
+Supporting evidence can be found in the **Supporting Evidence** folder. These are saved as PDFs and a Markdown file.
 
 **Note for VS Code users:** PDFs do not automatically render in VS Code so to view them directly in the editor, install the [VS Code PDF plugin](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf).  
+
+## BDD Tests
+I have used Morelia for my BDD tests and these can be found in the `tests` directory.
 
 ## Running the App Locally
 
